@@ -22,7 +22,7 @@ from kortex_driver.msg import *
 class ExampleFullArmMovement:
     def __init__(self):
         try:
-            rospy.init_node('example_full_arm_movement_python')
+            rospy.init_node('example_full_arm_movement_python')   #创建ros节点
 
             self.HOME_ACTION_IDENTIFIER = 2
 
@@ -130,7 +130,7 @@ class ExampleFullArmMovement:
             rospy.sleep(2.5)
             return True
 
-    def example_home_the_robot(self):
+    def example_home_the_robot(self):        #机械臂回零
         # The Home Action is used to home the robot. It cannot be deleted and is always ID #2:
         self.last_action_notif_type = None
         req = ReadActionRequest()
@@ -173,7 +173,7 @@ class ExampleFullArmMovement:
         rospy.sleep(0.25)
         return True
 
-    def example_send_cartesian_pose(self):
+    def example_send_cartesian_pose(self):          # 笛卡尔空间运动
         self.last_action_notif_type = None
         # Get the actual cartesian pose to increment it
         # You can create a subscriber to listen to the base_feedback
@@ -210,7 +210,7 @@ class ExampleFullArmMovement:
         else:
             return self.wait_for_action_end_or_abort()
 
-    def example_send_joint_angles(self):
+    def example_send_joint_angles(self):          # 关节空间运动
         self.last_action_notif_type = None
 
         req = ExecuteActionRequest()
